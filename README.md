@@ -1,6 +1,6 @@
 # Project demostrates how to use virtual environment in python
 - virtualenv
-- venv
+- venv (build-in)
 - pipenv
 
 ---
@@ -10,22 +10,31 @@
 - Python 3.10.4
 - pip 22.2.2
 - virtualenv 20.17.1
+- pipenv 2022.11.30
 
 ---
 
 ## virtualenv
 ## For window version and installed python 3.11.0
 ### Create a virtual environment (python 3.11.0 installed)
+```cmd
 virtualenv --python=3.11 venv
+```
 
 ### activate the virtual environment
+```cmd
 venv\Scripts\activate.bat
+```
 
 ### Install python package
+```cmd
 pip install requests
+```
 
 ### Check the path of the virtual environmnet is added
+```cmd
 echo %path%
+```
 
 ### Virtual Environment (after installation above):
 - Python 3.11.0
@@ -35,25 +44,37 @@ echo %path%
 
 ## pipenv (recommend)
 ### Create a virtual environment (python 3.10.4 installed)
+```cmd
 pipenv --python 3.10
+```
 
 ### activate the virtual environment
+```cmd
 pipenv shell
+```
 
 ### Install python package
+```cmd
 pipenv install requests
 pipenv install pytest --dev
+```
 
 ### Run the python script (not enter virtual environment)
+```cmd
 pipenv run python check.py
+```
 
 ### Uninstall python package
+```cmd
 pipenv uninstall request
+```
 
 ### List the package dependency graph
+```cmd
 pipenv graph
+```
 
-## Features of pipenv
+## Some Features of pipenv, not list all
 - Pipfile is used instead of requirements.txt
 - You no longer need to use pip and virtualenv separately. They work together.
 
@@ -95,10 +116,16 @@ pip install virtualenv==20.17.1
 
 ```
 
-### Check the version the package virtualenv
+### Install pipenv
+```cmd
+pip install pipenv
+pip install pipenv==2022.11.30
+```
+
+### Check the version the package virtualenv and pipenv
 ```python
 virtualenv --version
-pip show virtualenv
+pip show virtualenv pipenv
 ```
 
 ### List all the installed package of python
