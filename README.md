@@ -1,72 +1,83 @@
-# Project demostrates how to use virtual environment in python
-- virtualenv
-- venv (build-in)
-- pipenv
+# Project demostrates how to use virtual environments in python
+1. virtualenv
+2. venv (build-in) (Not demostrate)
+3. pipenv (Recommend to use)
 
 ---
 
 ## Environment:
 - Windows 10
-- Python 3.10.4
-- pip 22.2.2
-- virtualenv 20.17.1
-- pipenv 2022.11.30
+- Python 3.11.3
+- pip 23.1.2
+- virtualenv 20.23.0
+- pipenv 2023.4.29
 
 ---
 
-## virtualenv
-## For window version and installed python 3.11.0
-### Create a virtual environment (python 3.11.0 installed)
+## 1. Virtual environment (virtualenv)
+## For window version and installed python 3.11
+### 1a. Create a virtual environment (python 3.11 installed)
 ```cmd
 virtualenv --python=3.11 venv
 ```
 
-### activate the virtual environment
+### 1b. activate the virtual environment
 ```cmd
 venv\Scripts\activate.bat
 ```
 
-### Install python package
+### 1c. Install python package after activating the virtual environment
 ```cmd
 pip install requests
 ```
 
-### Check the path of the virtual environmnet is added
-```cmd
+### 1d. Check the path of the virtual environmnet is added
+```sh
 echo %path%
 ```
+and test if the requests package is installed
+```sh
+python check.py
+```
 
-### Virtual Environment (after installation above):
-- Python 3.11.0
-- pip 22.3.1
+### Verison of the Virtual Environment venv (after installation above):
+- Python 3.11.3
+- pip 23.1.2
 
 ---
 
-## pipenv (recommend)
-### Create a virtual environment (python 3.10.4 installed)
-```cmd
-pipenv --python 3.10
+## 3. pipenv (recommend)
+### 3a. Install pipenv
+```sh
+python -m pip install --upgrade pip
+python -m pip install --upgrade pipenv
 ```
 
-### activate the virtual environment
-```cmd
-pipenv shell
+### 3b. Create a virtual environment (python 3.11 installed)
+```sh
+pipenv --python 3.11.3
 ```
 
-### Install python package
-```cmd
-pipenv install requests
+### 3c. Install all python packages or specific packages (no need enter virtual environment)
+```sh
+pipenv install
+pipenv install requests beautifulsoup4 html5lib
 pipenv install pytest --dev
 ```
 
-### Run the python script (not enter virtual environment)
-```cmd
+### 3d. Run the python script (no need enter virtual environment)
+```sh
 pipenv run python check.py
 ```
 
+### Activate the virtual environment
+```sh
+pipenv shell
+```
+
 ### Uninstall python package
-```cmd
-pipenv uninstall request
+```sh
+pipenv uninstall requests
 ```
 
 ### List the package dependency graph
@@ -82,53 +93,86 @@ pipenv graph
 
 ## Commands
 ### Check python version
-```cmd
-python --version
+```sh
 python -V
 ```
 
 ### Check pip version
-```cmd
-pip --version
+```sh
 pip -V
 ```
 
-### Locate pip and the Python interpreter
-```cmd
-where pip
-where python
-```
-
-### Export the installed package to requirements.txt
-```cmd
-pip freeze > requirements.txt
-```
-
-### Install the python packages
-```cmd
-pip -r requirements.txt 
-```
-
-### Install virtualenv
-```cmd
-pip install virtualenv
-pip install virtualenv==20.17.1
-
-```
-
-### Install pipenv
-```cmd
-pip install pipenv
-pip install pipenv==2022.11.30
-```
-
-### Check the version the package virtualenv and pipenv
-```python
-virtualenv --version
-pip show virtualenv pipenv
+### Check the version the package pipenv
+```sh
+pip show pipenv
 ```
 
 ### List all the installed package of python
-```python
+```sh
 pip list
+```
+
+### Locate pip and the Python interpreter
+```sh
+where pip
+where python
+where pipenv
+```
+
+and sometimes it may be important to find the path of python interpreter using in the pipenv environment
+#### Output Python interpreter, pip, pipenv  information of pipenv environment
+```sh
+pipenv run pip -V
+pipenv --py
+pipenv --version
+```
+
+#### Output virtualenv information.
+```sh
+pipenv --venv
+```
+
+#### Remove the virtualenv.
+```sh
+pipenv  --rm  
+```                          
+
+---
+
+## Other Commands 
+### Export the installed package to requirements.txt
+```sh
+pip freeze > requirements.txt
+```
+or package of pipenv environment to requirements.txt
+```sh
+pipenv run pip freeze > requirements.txt
+```
+
+### Install the python packages from requirements.txt 
+```sh
+pip -r requirements.txt 
+```
+
+or inside pipenv environment (not recommend)
+```sh
+pipenv run pip -r requirements.txt 
+```
+
+### Install virtualenv
+```sh
+pip install virtualenv
+pip install virtualenv==20.23.0
+```
+
+### Install pipenv
+```sh
+pip install pipenv
+pip install pipenv==2023.4.29
+```
+
+### Check the version the package virtualenv and pipenv
+```sh
+virtualenv --version
+pip show virtualenv pipenv
 ```
